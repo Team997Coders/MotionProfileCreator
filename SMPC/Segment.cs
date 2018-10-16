@@ -9,28 +9,18 @@ namespace SMPC {
 
         public SegmentType segmentType;
 
-        private double leftV, rightV;
+        private double leftV, rightV,
+                        leftDelta, rightDelta;
 
-        public Segment(SegmentType segmentType) {
+        public Segment(SegmentType segmentType, double leftV, double rightV, double leftDelta, double rightDelta) {
             this.segmentType = segmentType;
+            this.leftV = leftV;
+            this.rightV = rightV;
+            this.leftDelta = leftDelta;
+            this.rightDelta = rightDelta;
         }
 
-        public string getInstruction() { return leftV + "," + rightV; }
-
-        // Type indentification
-
-        public class SegmentType {
-
-            public static SegmentType Curve = new SegmentType(1),
-                                        Straight = new SegmentType(0);
-
-            public int type;
-
-            public SegmentType(int type) {
-                this.type = type;
-            }
-
-        }
+        public string getInstruction() { return leftV + "," + rightV + "." + leftDelta + "," + leftV; }
 
     }
 }
